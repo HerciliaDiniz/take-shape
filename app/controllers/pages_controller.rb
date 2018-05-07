@@ -12,4 +12,5 @@ class PagesController < ApplicationController
 
   def how_to_shape
   end
+  
 end
