@@ -8,6 +8,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.2'
+gem 'devise'
+gem 'activeadmin'
 gem 'faker'
 gem 'fog'
 gem 'friendly_id', '~> 5.2.4'

@@ -1,0 +1,11 @@
+<p>Hello
+  <%= @user.full_name %>
+</p>
+
+<p>Please confirm your email by clicking on the link: </p>
+
+<%= link_to 'click here', confirmation_url({ id: @user.token }) %>
+
+<p>Regards</p>
+
+<p>Team</p>

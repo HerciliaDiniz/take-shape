@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      UsersMailer.send_confirmation_email(@user).deliver_later
       flash[:notice] = "Thank you, #{@user.first_name}, for signing up!"
       redirect_to home_path
     else
