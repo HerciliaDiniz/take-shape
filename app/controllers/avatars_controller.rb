@@ -6,4 +6,6 @@ class AvatarsController < ApplicationController
     redirect_to @user
   end
 
+  # look into that
+
 end
