@@ -1,22 +1,24 @@
 class FinalProductsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = FinalProduct.all
+    @products = FinalProduct.all.with_attached_images
   end
 
   def show
   end
 
   def new
-    @products = FinalProduct.new
+    @product = FinalProduct.new
   end
 
   def create
     @product = FinalProduct.new(product_params) 
 
     if @product.save
+      @product.images.attach params[:product][:images]
       redirect_to @product, notice: 'Successfully created!'
     else
       render :new
@@ -47,7 +49,7 @@ class FinalProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:final_product).permit(:title, :subtitle, :description, :image, :price)
+    params.require(:final_product).permit(:title, :subtitle, :description, :price)
   end
 
 end

@@ -7,9 +7,6 @@ class PagesController < ApplicationController
   def about
   end
 
-  def contact
-  end
-
   def how_to_shape
   end
   

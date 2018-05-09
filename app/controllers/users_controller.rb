@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       UsersMailer.send_confirmation_email(@user).deliver_later
       flash[:notice] = "Thank you, #{@user.first_name}, for signing up!"
-      redirect_to home_path
+      redirect_to root_path
     else
       render :new
     end
@@ -27,13 +27,13 @@ class UsersController < ApplicationController
   end
 
   def update
-      @user = User.find params[:id]
+    @user = User.find params[:id]
 
-      if @user.update user_params
-        redirect_to home_path
-      else
-        render :edit
-      end
+    if @user.update user_params
+      redirect_to home_path
+    else
+      render :edit
+    end
     
   end
 
@@ -45,8 +45,7 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
-      :permission_type,
-      :image
+      :permission_type
     )
   end
 

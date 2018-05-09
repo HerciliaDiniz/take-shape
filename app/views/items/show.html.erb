@@ -1,0 +1,5 @@
+<% if @item.images.attached? %>
+  <% @item.images.each do |image| %>
+    <%= image_tag image.variant(resize: "500x500").processed.service_url %>
+  <% end %>
+<% end %>

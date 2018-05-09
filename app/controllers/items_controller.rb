@@ -1,22 +1,24 @@
 class ItemsController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :find_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
+    @items = Item.all.with_attached_images
   end
 
   def show
   end
 
   def new
-    @items = Item.new
+    @item = Item.new
   end
 
   def create
     @item = Item.new(item_params) 
-
+    @item.user = current_user
     if @item.save
+      @item.images.attach params[:item][:images]
       redirect_to @item, notice: 'Successfully created!'
     else
       render :new
@@ -47,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:title, :subtitle, :description, :image, :price)
+    params.require(:item).permit(:title, :subtitle, :description, :price)
   end
 
 end
