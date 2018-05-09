@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
+      @user.avatar.attach params[:user][:avatar]
       session[:user_id] = @user.id
       UsersMailer.send_confirmation_email(@user).deliver_later
       flash[:notice] = "Thank you, #{@user.first_name}, for signing up!"

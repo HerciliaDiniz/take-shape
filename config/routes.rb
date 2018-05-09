@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   get 'pages/how-to-shape'
 
   resources :confirmations, only: [:show]
+
+  resources :users
+
+
 end

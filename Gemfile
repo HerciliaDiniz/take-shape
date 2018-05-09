@@ -3,16 +3,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
+gem 'activeadmin'
+gem 'aws-sdk-s3', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
-gem 'activeadmin'
 gem 'faker'
 gem 'fog'
 gem 'friendly_id', '~> 5.2.4'
+gem 'image_processing'
 gem 'jbuilder', '~> 2.5'
 gem 'mini_magick', '~> 4.8'
 gem 'pg', '>= 0.18', '< 2.0'

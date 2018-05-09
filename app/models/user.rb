@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :arts, dependent: :destroy
   has_many :items
   has_many :final_products
-  # has_many :images, dependent: :destroy
+  has_one_attached :avatar
   
   has_secure_password
 

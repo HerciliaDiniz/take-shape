@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_08_221602) do
+ActiveRecord::Schema.define(version: 2018_05_09_054640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2018_05_08_221602) do
     t.string "title"
     t.string "subtitle"
     t.text "description"
-    t.string "image"
     t.integer "price"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -79,11 +78,20 @@ ActiveRecord::Schema.define(version: 2018_05_08_221602) do
     t.index ["user_id"], name: "index_arts_on_user_id"
   end
 
+  create_table "favourites", force: :cascade do |t|
+    t.string "favouritable_type"
+    t.bigint "favouritable_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["favouritable_type", "favouritable_id"], name: "index_favourites_on_favouritable_type_and_favouritable_id"
+    t.index ["user_id"], name: "index_favourites_on_user_id"
+  end
+
   create_table "final_products", force: :cascade do |t|
     t.string "title"
     t.string "subtitle"
     t.text "description"
-    t.string "image"
     t.integer "price"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -95,12 +103,22 @@ ActiveRecord::Schema.define(version: 2018_05_08_221602) do
     t.string "title"
     t.string "subtitle"
     t.text "description"
-    t.string "image"
     t.integer "price"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "body"
+    t.string "reviewable_type"
+    t.bigint "reviewable_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable_type_and_reviewable_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -122,7 +140,6 @@ ActiveRecord::Schema.define(version: 2018_05_08_221602) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "image"
     t.integer "permission_type"
     t.string "password_digest"
     t.datetime "created_at", null: false
@@ -133,8 +150,10 @@ ActiveRecord::Schema.define(version: 2018_05_08_221602) do
   end
 
   add_foreign_key "arts", "users"
+  add_foreign_key "favourites", "users"
   add_foreign_key "final_products", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "arts"
   add_foreign_key "taggings", "tags"
 end
