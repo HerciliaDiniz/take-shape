@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_09_054640) do
+ActiveRecord::Schema.define(version: 2018_05_10_185904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,10 @@ ActiveRecord::Schema.define(version: 2018_05_09_054640) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "art_id"
+    t.bigint "item_id"
+    t.index ["art_id"], name: "index_final_products_on_art_id"
+    t.index ["item_id"], name: "index_final_products_on_item_id"
     t.index ["user_id"], name: "index_final_products_on_user_id"
   end
 
@@ -151,6 +155,8 @@ ActiveRecord::Schema.define(version: 2018_05_09_054640) do
 
   add_foreign_key "arts", "users"
   add_foreign_key "favourites", "users"
+  add_foreign_key "final_products", "arts"
+  add_foreign_key "final_products", "items"
   add_foreign_key "final_products", "users"
   add_foreign_key "items", "users"
   add_foreign_key "reviews", "users"

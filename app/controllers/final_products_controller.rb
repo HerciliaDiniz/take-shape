@@ -11,6 +11,8 @@ class FinalProductsController < ApplicationController
   end
 
   def new
+    @arts = Art.all
+    @items = Item.all
     @product = FinalProduct.new
   end
 
