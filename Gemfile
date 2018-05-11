@@ -23,6 +23,7 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'react-rails'
 gem 'sass-rails', '~> 5.0'
+gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 

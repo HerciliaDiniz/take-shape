@@ -3,10 +3,22 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  resources :confirmations, only: [:show]
+  get('carts/:id', { to: 'carts#show', as: :cart })
+  delete('carts/:id', { to: 'carts#destroy' })
+
+  post('line_items/:id/add', { to: 'line_items#add_quantity', as: :line_item_add })
+  post('line_items/:id/reduce', { to: 'line_items#reduce_quantity', as: :line_item_reduce })
+  post('line_items', { to: 'line_items#create' })
+  get('line_items/:id', { to: 'line_items#show', as: :line_item })
+  delete('line_items/:id', { to: 'line_items#destroy'})
+
+  resources :products
+  resources :orders
+  resources :charges
 
   resource :session, only: [:new, :create, :destroy]
-  resources :users, only: [:create, :new, :show]
+  resources :users, only: [:create, :new, :show] 
+  resources :confirmations, only: [:show]
 
   resources :arts do
     resources :favourites, shallow: true, only: [ :create, :destroy ]

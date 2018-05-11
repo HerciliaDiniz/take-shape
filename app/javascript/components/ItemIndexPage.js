@@ -1,6 +1,17 @@
 import React from "react"
-import PropTypes from "prop-types"
+
 class ItemIndexPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loading: true,
+      items: []
+    }
+  }
+
+  
+
   render () {
     return (
       <React.Fragment>
