@@ -1,10 +1,10 @@
 class FinalProductsController < ApplicationController
 
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :find_product, only: [:show, :edit, :update, :destroy]
+  before_action :find_final_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = FinalProduct.all.with_attached_images
+    @final_products = FinalProduct.all.with_attached_images
   end
 
   def show
@@ -13,15 +13,20 @@ class FinalProductsController < ApplicationController
   def new
     @arts = Art.all
     @items = Item.all
-    @product = FinalProduct.new
+    @final_product = FinalProduct.new
   end
 
   def create
-    @product = FinalProduct.new(product_params) 
+    @art = Art.find params[:final_product][:art_id]
+    @item = Item.find params[:final_product][:item_id]
+    @final_product = FinalProduct.new final_product_params
+    @final_product.art = @art
+    @final_product.item = @item
+    @final_product.user = current_user
 
-    if @product.save
-      @product.images.attach params[:product][:images]
-      redirect_to @product, notice: 'Successfully created!'
+    if @final_product.save
+      # @final_product.images.attach params[:final_product][:images]
+      redirect_to @final_product, notice: 'Successfully created!'
     else
       render :new
     end
@@ -32,26 +37,26 @@ class FinalProductsController < ApplicationController
   end
 
   def update
-    if @product.update(product_params)
-      redirect_to @product, notice: 'Successfully updated!'
+    if @final_product.update(final_product_params)
+      redirect_to @final_product, notice: 'Successfully updated!'
     else
       render :edit
     end
   end
 
   def destroy
-    @product.destroy
-    redirect_to products_url, notice: 'Successfully deleted!'
+    @final_product.destroy
+    redirect_to final_products_path, notice: 'Successfully deleted!'
   end
 
   private
 
-  def find_product
-    @product = FinalProduct.find params[:id]
+  def find_final_product
+    @final_product = FinalProduct.find params[:id]
   end
 
-  def product_params
-    params.require(:final_product).permit(:title, :subtitle, :description, :price)
+  def final_product_params
+    params.require(:final_product).permit(:title, :subtitle, :description)
   end
 
 end

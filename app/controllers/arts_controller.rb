@@ -39,7 +39,7 @@ class ArtsController < ApplicationController
 
   def destroy
     @art.destroy
-    redirect_to arts_url, notice: 'Successfully deleted!'
+    redirect_to arts_path, notice: 'Successfully deleted!'
   end
 
   private

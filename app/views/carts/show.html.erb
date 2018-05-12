@@ -1,0 +1,20 @@
+<h2>Cart</h2>
+<ul>
+  <% @cart.line_items.each do |line_item| %>
+    <li>Item: <%= line_item.final_product.title %>/ Price: <%= number_to_currency(line_item.final_product.price) %>/ Quantity: <%= line_item.quantity %>/ Total Price: <%= number_to_currency(line_item.total_price) %>
+    <ul>
+      <li>
+        <%= link_to "Add one", add_line_item_path(line_item), method: :patch %>
+        <%= link_to "Reduce one", reduce_line_item_path(line_item), method: :patch %>
+      </li>
+      <li>
+        <%= link_to "Remove item", line_item_path(line_item), method: :delete %>
+      </li>
+    </ul>
+  <% end %>
+</ul>
+<h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
+
+<%= link_to "Proceed to checkout", new_order_path %><br>
+
+<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>

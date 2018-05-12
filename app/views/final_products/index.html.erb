@@ -1,0 +1,11 @@
+<% @final_products.each do |product| %>
+  <p>Name: <%= link_to "#{product.title}", final_product_path(product) %> </p>
+  <p><%= product.subtitle %></p>
+  <p><%= product.description %></p>
+  <p>Price: <%= number_to_currency(product.price) %></p>
+  <p>
+    <%= link_to "Edit", edit_final_product_path(product) %> |
+    <%= link_to "Delete", final_product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= button_to "Add #{product.title} to cart", line_items_path(:final_product_id => product.id) %>
+  </p>
+<% end%>

@@ -1,0 +1,8 @@
+  <p><%= @final_product.title %></p>
+  <p><%= @final_product.subtitle %></p>
+  <p><%= @final_product.description %></p>
+  <p>Price: <%= number_to_currency(@final_product.price) %></p>
+
+    <%= link_to "Edit", edit_final_product_path(@final_product) %> |
+    <%= link_to "Delete", final_product_path(@final_product), method: :delete, data: {confirm: "Are you sure?"} %>
+    <%= button_to "Add #{@final_product.title} to cart", line_items_path(:final_product_id => @final_product.id) %>

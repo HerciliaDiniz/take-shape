@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_10_185904) do
+ActiveRecord::Schema.define(version: 2018_05_11_193819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,11 @@ ActiveRecord::Schema.define(version: 2018_05_10_185904) do
     t.index ["user_id"], name: "index_arts_on_user_id"
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favourites", force: :cascade do |t|
     t.string "favouritable_type"
     t.bigint "favouritable_id"
@@ -112,6 +117,30 @@ ActiveRecord::Schema.define(version: 2018_05_10_185904) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "line_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "final_product_id"
+    t.bigint "cart_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_line_items_on_cart_id"
+    t.index ["final_product_id"], name: "index_line_items_on_final_product_id"
+    t.index ["order_id"], name: "index_line_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "stripe_txn_id"
+    t.integer "total_amount"
+    t.integer "buyer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email"
+    t.text "address"
+    t.string "payment_method"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -159,6 +188,9 @@ ActiveRecord::Schema.define(version: 2018_05_10_185904) do
   add_foreign_key "final_products", "items"
   add_foreign_key "final_products", "users"
   add_foreign_key "items", "users"
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "final_products"
+  add_foreign_key "line_items", "orders"
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "arts"
   add_foreign_key "taggings", "tags"

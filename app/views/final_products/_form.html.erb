@@ -1,0 +1,36 @@
+<%= form_for @final_product do |f| %>
+  <%= @final_product.errors.full_messages.join(', ') %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :subtitle %>
+    <%= f.text_field :subtitle %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :art, 'Choose a design' %>
+    <%= f.collection_select(:art_id, @arts, :id, :title, :include_blank => "Please select") %>
+  </div>
+  <div>
+    <%= f.label :item, 'Choose an object' %>
+    <%= f.collection_select(:item_id, @items, :id, :title, :include_blank => "Please select") %>
+  </div>
+  <div>
+    <%= f.label :price, 'Your total is' %>
+    <%= @final_product.price %>
+  </div>
+    <%= f.submit "Submit" %>
+<% end %>
+
+  <div>
+  <% if @final_product.images.attached? %>
+    <% @final_product.images.each do |image| %>
+      <%= image_tag image.variant(resize: "500x500").processed.service_url %>
+    <% end %>
+  <% end %>
+  </div>
