@@ -10,8 +10,7 @@
 
 import ReactDOM from "react-dom"; 
 import React from "react";
-import { qS } from "../src/dom";
-import HomePage from "../components/HomePage";
+import { App } from "../components/App";
 
 // Support component names relative to this directory:
 var componentRequireContext = require.context("components", true)
