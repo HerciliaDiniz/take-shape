@@ -21,8 +21,10 @@
     <%= f.collection_select(:item_id, @items, :id, :title, :include_blank => "Please select") %>
   </div>
   <div>
-    <%= f.label :price, 'Your total is' %>
-    <%= @final_product.price %>
+    <% if @final_product %>
+      <%= f.label :price, 'Your final price is' %>
+      <%= @final_product.price %>
+    <% end %>
   </div>
     <%= f.submit "Submit" %>
 <% end %>
