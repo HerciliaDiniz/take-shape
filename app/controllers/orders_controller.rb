@@ -15,7 +15,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.buyer_id = current_user
+    @order.buyer_id = current_user.id
+    @order.total_amount = @current_cart.line_items.map(&:total_price).sum
     @current_cart.line_items.each do |item|
       @order.line_items << item
       item.cart_id = nil
@@ -23,7 +24,7 @@ class OrdersController < ApplicationController
     if @order.save
       Cart.destroy(session[:cart_id])
       session[:cart_id] = nil
-      redirect_to root_path
+      redirect_to new_order_charge_path(@order)
     else
       render :new
     end
@@ -32,11 +33,23 @@ class OrdersController < ApplicationController
   private
 
   def find_order
-    @order = Order.find(params[:id])
+    @order = Order.find params[:id]
   end
 
   def order_params
-    params.require(:order).permit(:name, :email, :address, :payment_method)
+    params.require(:order).permit(
+      :first_name, 
+      :last_name, 
+      :email, 
+      :address, 
+      :unit, 
+      :city, 
+      :country, 
+      :state, 
+      :postal_code, 
+      :phone, 
+      :payment_method
+    )
   end
 
 end

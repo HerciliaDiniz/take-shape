@@ -1,21 +1,10 @@
 Rails.application.routes.draw do
   
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/new'
-  get 'carts/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   get('carts/:id', { to: 'carts#show', as: :cart })
   delete('carts/:id', { to: 'carts#destroy' })
-
-  # patch('line_items/:id/add', { to: 'line_items#add_quantity', as: :line_item_add })
-  # patch('line_items/:id/reduce', { to: 'line_items#reduce_quantity', as: :line_item_reduce })
-  # post('line_items', { to: 'line_items#create' })
-  # get('line_items/:id', { to: 'line_items#show', as: :line_item })
-  # delete('line_items/:id', { to: 'line_items#destroy'})
-
 
   resources :line_items, only: [:show, :create, :destroy] do
     member do
@@ -24,8 +13,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders
-  resources :charges
+  resources :orders, shallow: true, only: [:new, :create] do 
+    resources :charges, only: [:new, :create]
+  end
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:create, :new, :show] 

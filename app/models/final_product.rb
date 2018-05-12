@@ -5,6 +5,7 @@ class FinalProduct < ApplicationRecord
   belongs_to :item
   has_many_attached :images
 
+  validates :price, numericality: { greater_than: 0 }
   before_validation :calculate_final_product_price
 
   def calculate_final_product_price

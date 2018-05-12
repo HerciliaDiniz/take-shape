@@ -1,11 +1,16 @@
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-
 PASSWORD = "supersecret"
 
+AdminUser.destroy_all
 User.destroy_all
+FinalProduct.destroy_all
 Art.destroy_all
 Item.destroy_all
-FinalProduct.destroy_all
+
+admin_user = AdminUser.create!(
+  email: 'admin@example.com', 
+  password: 'password', 
+  password_confirmation: 'password'
+) if Rails.env.development?
 
 super_user = User.create(
   first_name: "Jon",
@@ -71,3 +76,4 @@ puts "Created a #{arts.count} arts."
 puts "Created a #{items.count} items."
 puts "Created a #{final_products.count} final products."
 puts "Login with #{super_user.email} and password of '#{PASSWORD}.'"
+puts "Login to admin dashboard with #{admin_user.email} and password of '#{admin_user.password}.'"

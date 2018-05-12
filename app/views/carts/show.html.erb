@@ -1,7 +1,10 @@
 <h2>Cart</h2>
 <ul>
   <% @cart.line_items.each do |line_item| %>
-    <li>Item: <%= line_item.final_product.title %>/ Price: <%= number_to_currency(line_item.final_product.price) %>/ Quantity: <%= line_item.quantity %>/ Total Price: <%= number_to_currency(line_item.total_price) %>
+    <li>Item: <%= line_item.final_product.title %></li>
+    <li>Price: <%= number_to_currency(line_item.final_product.price) %></li>
+    <li>Quantity: <%= line_item.quantity %></li> 
+    <li>Total Price: <%= number_to_currency(line_item.total_price) %></li>
     <ul>
       <li>
         <%= link_to "Add one", add_line_item_path(line_item), method: :patch %>
