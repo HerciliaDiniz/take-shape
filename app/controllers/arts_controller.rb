@@ -4,7 +4,8 @@ class ArtsController < ApplicationController
   before_action :find_art, only: [:show, :edit, :update, :destroy]
 
   def index
-    @arts = Art.all.with_attached_images
+    # @arts = Art.all.with_attached_images
+    @arts = Art.with_attached_images.map { |art| art.as_json.merge({ images: art.images.map {|img| img.variant(resize: "500x500").processed.service_url }.as_json }) }
   end
 
   def show

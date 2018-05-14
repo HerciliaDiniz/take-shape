@@ -3,6 +3,5 @@
 <% end %>
 <%= image_tag @art.images[0] %>
 
-
-<%= react_component("CardList", { individualArt: @art }) %>
+<%= react_component("CardList", { art: @art }) %>
 
