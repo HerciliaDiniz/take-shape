@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 
-const Card = (props) => {
-  const { arts = [] } = props;
+const Card = ({ image, title, subtitle, price }) => {
   return (
-    <div className='Card bg-light-gray dib br3 pa3 ma2 grow'> 
-      <img src='arts[100].images[0]' />
+    <div className='Card tc bg-light-gray dib br3 pa3 ma2 grow'> 
+      <img src='{image}' />
       <div>
-        <h2>Jane Doe</h2>
-        <p>jane@doe.com</p>
+        <h2>{title}</h2>
+        <p>{subtitle}</p>
+        <p>$ {price}</p>
       </div>
     </div>
   )

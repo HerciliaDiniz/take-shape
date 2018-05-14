@@ -1,6 +1,8 @@
-<%= @arts.each do |art| %>
-  <p><%= link_to "#{art.title}", art_path(art) %></p>
-  <p><%= art.subtitle %></p>
-  <p><%= art.description %></p>
-  <p>Price: <%= number_to_currency(art.price) %></p>
-<% end %>
+<%# @arts.each do |art| %>
+  <p><%# link_to "#{art.title}", art_path(art) %></p>
+  <p><%# art.subtitle %></p>
+  <p><%# art.description %></p>
+  <p><%# number_to_currency(art.price) %></p>
+<%# end %>
+
+<%= react_component("ArtsIndexPage", { arts: @arts }) %>
