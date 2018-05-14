@@ -1,3 +1,8 @@
 <h1>Please make the payment</h1>
 
-<%= react_component("Stripe") %>
+  <%= form_tag order_charges_path(@order), id: 'server-form' do %>
+    <%= hidden_field_tag :stripe_token %>
+  <% end %>
+
+  <h2>Amount: <%= number_to_currency(@amount) %></h2>
+  <%= react_component("Stripe") %>

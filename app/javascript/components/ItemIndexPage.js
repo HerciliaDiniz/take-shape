@@ -10,8 +10,6 @@ class ItemIndexPage extends React.Component {
     }
   }
 
-  
-
   render () {
     return (
       <React.Fragment>
@@ -20,4 +18,4 @@ class ItemIndexPage extends React.Component {
   }
 }
 
-export default ItemIndexPage
+export default ItemIndexPage;

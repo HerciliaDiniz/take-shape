@@ -7,7 +7,6 @@ gem 'activeadmin'
 gem 'aws-sdk-s3', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'bootstrap'
 gem 'cancancan'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
