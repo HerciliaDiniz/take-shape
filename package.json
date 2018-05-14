@@ -11,7 +11,8 @@
     "react-dom": "^16.3.2",
     "react-stripe-elements": "^1.6.0",
     "react_ujs": "^2.4.4",
-    "reactstrap": "^6.0.1"
+    "reactstrap": "^6.0.1",
+    "tachyons": "^4.9.1"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

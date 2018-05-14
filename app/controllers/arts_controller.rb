@@ -16,6 +16,7 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.new(art_params) 
+    @art.user = current_user 
 
     if @art.save
       @art.images.attach params[:art][:images]
