@@ -1,6 +1,7 @@
 <% @art.images.each do |image| %>
   <%# image_tag image.variant(resize: "500x500").processed.service_url %>
 <% end %>
+<%= image_tag @art.images[0] %>
 
 
 <%= react_component("CardList", { individualArt: @art }) %>

@@ -16,40 +16,44 @@
 
   <body>
 
-    <%= link_to 'Home', root_path %>
-        |
-        <%= link_to 'Contact Us', contact_us_path %>
-        |
-        <%= link_to 'Arts', arts_path %>
-        |
-        <%= link_to 'Items', items_path %>
-        |
-        <%= link_to 'Final Product', final_products_path %>
-        |
-        <% if current_user.present? %>
-          <span>Hi, <%= current_user.first_name%>!</span>
-            |
+<div class="wrap">
+  <span class="decor"></span>
+  <nav>
+    <ul class="primary">
+      <li>
+        <a href="">Start Shaping</a>
+        <ul class="sub">
+          <li><%= link_to 'Arts', arts_path %></li>
+          <li><%= link_to 'Items', items_path %></li>
+          <li><%= link_to 'Final Product', final_products_path %></li>
+        </ul>
+      </li>
+      <li><%= link_to 'Contact Us', contact_us_path %></li>
+      <li><%= link_to 'Home', root_path %></li>
+      <% if current_user.present? %>
+        <span>Hi, <%= current_user.first_name%>!</span>
+        <li>    
           <%= link_to 'Sign Out', session_path, method: :delete %>
-        <% else %>
-          |
-          <%= link_to 'Sign In', new_session_path %>
-          |
-          <%= link_to 'Sign Up', new_user_path %>
-        <% end %>
-        <hr>
+        </li>
+      <% else %>
+        <li><%= link_to 'Sign In', new_session_path %></li> 
+        <li><%= link_to 'Sign Up', new_user_path %></li> 
+      <% end %>
+        </li>
+    </ul>
+  </nav>
+</div>
 
-        <div class="container-fluid">
-
-          <% flash.each do |type, msg| %>
-            <div class="alert alert-<%= type == "alert" ? "danger" : "success" %> alert-dismissible fade show" role="alert">
-              <%= msg.html_safe %>
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          <% end %>
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-<%= type == "alert" ? "danger" : "success" %> alert-dismissible fade show" role="alert">
+      <%= msg.html_safe %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
           
-
     <%= yield %>
+
   </body>
 </html>

@@ -1,8 +1,9 @@
-<%# @arts.each do |art| %>
-  <p><%# link_to "#{art.title}", art_path(art) %></p>
-  <p><%# art.subtitle %></p>
-  <p><%# art.description %></p>
-  <p><%# number_to_currency(art.price) %></p>
-<%# end %>
+<% @arts.each do |art| %>
+  <% art.images.each do |image| %>
+    <%# image_tag image.variant(resize: "500x500").processed.service_url %>
+  <% end %>
+<% end %>
 
-<%= react_component("ArtsIndexPage", { arts: @arts }) %>
+<%# image_tag @arts[103].images[0].variant(resize: "500x500").processed.service_url %>
+
+<%= react_component("ArtsIndexPage", { arts: @arts, image: @image }) %>

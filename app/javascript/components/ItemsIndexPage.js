@@ -3,12 +3,12 @@ import CardList from './CardList';
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
 
-class ArtsIndexPage extends React.Component {
+class ItemsIndexPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      arts: props.arts,
+      items: props.items,
       searchfield: ''
     };
   }
@@ -18,23 +18,23 @@ class ArtsIndexPage extends React.Component {
   }
 
   render () {
-    const { arts, searchfield } = this.state;
+    const { items, searchfield } = this.state;
 
-    const filteredArts = arts.filter(art => {
-      return art.title.toLowerCase().includes(searchfield.toLowerCase())
+    const filteredItems = items.filter(item => {
+      return item.title.toLowerCase().includes(searchfield.toLowerCase())
     })
-    return !arts.length ? 
+    return !items.length ? 
       <h1>Loading</h1> :
       (
-        <div className='ArtsIndexPage tc'>
-          <h1 className='f2'>Arts</h1> 
+        <div className='ItemsIndexPage tc'>
+          <h1 className='f2'>Items</h1> 
           <SearchBox searchChange={this.onSearchChange} />
           <Scroll>
-          <CardList options={filteredArts} />
+          <CardList options={filteredItems} />
           </Scroll>
         </div>
       );
   }
 }
 
-export default ArtsIndexPage
+export default ItemsIndexPage

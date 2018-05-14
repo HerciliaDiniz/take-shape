@@ -1,19 +1,19 @@
 import React from "react";
 import Card from "./Card";
 
-const CardList = ({ arts = {}, individualArt }) => {
+const CardList = ({ options = {} }) => {
 
   return (
     <div>
       {
-        arts.map((art, i) => {
+        options.map((option, i) => {
           return (
             <Card
-              key={art.id}
-              image={art.images}
-              title={art.title}
-              subtitle={art.subtitle}
-              price={art.price}
+              key={option.id}
+              image={option.images}
+              title={option.title}
+              subtitle={option.subtitle}
+              price={option.price}
             />
           )  
         })
