@@ -7,7 +7,6 @@
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
-    "react-absolute-grid": "^3.0.1",
     "react-dom": "^16.3.2",
     "react-stripe-elements": "^1.6.0",
     "react_ujs": "^2.4.4",
