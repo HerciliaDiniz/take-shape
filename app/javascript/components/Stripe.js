@@ -15,7 +15,7 @@ class Stripe extends React.Component {
   render() {
     return (
       <StripeProvider stripe={this.state.stripe}>
-        <StoreCheckout />
+        < StoreCheckout orderUrl={this.props.orderUrl } / >
       </StripeProvider>
     );
   }

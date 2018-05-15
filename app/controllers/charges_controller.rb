@@ -3,6 +3,7 @@ class ChargesController < ApplicationController
   before_action :find_order, only: [:new, :create]
   before_action :amount, only: [:new, :create]
 
+
   layout 'charges'
 
   def new
@@ -15,7 +16,7 @@ class ChargesController < ApplicationController
     # )
 
     charge = Stripe::Charge.create(
-      :amount      => @amount,
+      :amount      => (@amount * 100).to_i,
       :currency    => "cad",
       :source      => params[:stripeToken], 
       :description => "Charge for order ID: #{@order.id}",
@@ -24,7 +25,8 @@ class ChargesController < ApplicationController
 
     @order.update!(stripe_txn_id: charge.id)
 
-    redirect_to @order, notice: 'Thanks for the purchase!'
+    # redirect_to @order, notice: 'Thanks for the purchase!'
+    render json: { redirect_url: root_path }
 
   rescue Stripe::CardError => e
     flash[:error] = e.message

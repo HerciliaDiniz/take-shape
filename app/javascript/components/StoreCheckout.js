@@ -6,7 +6,10 @@ class StoreCheckout extends React.Component {
   render() {
     return (
       <Elements>
-        <InjectedCheckoutForm />
+        < InjectedCheckoutForm orderUrl = {
+          this.props.orderUrl
+        }
+        />
       </Elements>
     );
   }

@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_signed_in?
 
   def current_user
+
     if session[:user_id].present?
       @_current_user ||= User.find_by(id: session[:user_id])
     end

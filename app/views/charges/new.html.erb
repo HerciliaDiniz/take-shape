@@ -5,4 +5,4 @@
   <% end %>
 
   <h2>Amount: <%= number_to_currency(@amount) %></h2>
-  <%= react_component("Stripe") %>
+  <%= react_component("Stripe", { orderUrl: order_charges_path(@order) } ) %>

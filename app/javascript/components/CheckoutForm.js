@@ -10,14 +10,25 @@ class CheckoutForm extends React.Component {
     // Within the context of `Elements`, this call to createToken knows which Element to
     // tokenize, since there's only one in this group.
     this.props.stripe.createToken({name: 'Jenny Rosen'}).then(({token}) => {
-      return fetch({
+      console.log('>>>>>>>>>>>>>>>');
+      console.log(token);
+      console.log('>>>>>>>>>>>>>>>');
+      return fetch(this.props.orderUrl, {
         method: 'POST',
-        url: '/orders/1/charges',
+        headers: new Headers({
+          'X-Requested-With': 'XMLHttpRequest',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
+        }),
         body: JSON.stringify({
-          stripeToken: token
-        })
-      })
+          stripeToken: token.id
+        }),
+        credentials: 'same-origin'
+      });
       // console.log('Received Stripe token:', token);      
+    }).then((response) => response.json()).then((json) => {
+      window.location = json.redirect_url;
     });
 
     // However, this line of code will do the same thing:

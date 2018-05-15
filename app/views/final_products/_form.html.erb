@@ -36,3 +36,7 @@
     <% end %>
   <% end %>
   </div>
+
+<%= form_with(model: @final_product, local: true) do |form| %>
+  <%= react_component 'NewFinalProductPage', { arts: @arts, items: @items, product: @final_product } %>
+<% end %>

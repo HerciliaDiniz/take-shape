@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const CardList = ({ options = {} }) => {
   return (
-    <div>
+    <div> 
       {
       options.map((option, i) => {
           return (
@@ -16,9 +16,7 @@ const CardList = ({ options = {} }) => {
             />
           )  
         })
-      
       }
-
     </div>
   );
 
