@@ -1,7 +1,6 @@
 import React from 'react';
 import { StripeProvider } from 'react-stripe-elements';
 import StoreCheckout from './StoreCheckout';
-import './Stripe.css';
 
 class Stripe extends React.Component {
   constructor() {

@@ -35,45 +35,5 @@ end
 users = User.all
 
 puts "Created #{users.count} users."
-
-100.times do
-  a = Art.create(
-    title: Faker::Beer.name,
-    subtitle: Faker::Beer.style,
-    description: Faker::Hacker.say_something_smart,
-    price: rand(100),
-    user: users.sample
-  )
-end
-
-100.times do
-  i = Item.create(
-    title: Faker::Beer.name,
-    subtitle: Faker::Beer.style,
-    description: Faker::Hacker.say_something_smart,
-    price: rand(100),
-    user: users.sample
-  )
-end
-
-arts = Art.all
-items = Item.all
-
-100.times do
-  p = FinalProduct.create(
-    title: Faker::Beer.name,
-    subtitle: Faker::Beer.style,
-    description: Faker::Hacker.say_something_smart,
-    art: arts.sample,
-    item: items.sample,
-    user: users.sample
-  )
-end
-
-final_products = FinalProduct.all
-
-puts "Created a #{arts.count} arts."
-puts "Created a #{items.count} items."
-puts "Created a #{final_products.count} final products."
 puts "Login with #{super_user.email} and password of '#{PASSWORD}.'"
 puts "Login to admin dashboard with #{admin_user.email} and password of '#{admin_user.password}.'"

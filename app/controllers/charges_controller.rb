@@ -3,23 +3,27 @@ class ChargesController < ApplicationController
   before_action :find_order, only: [:new, :create]
   before_action :amount, only: [:new, :create]
 
+  layout 'charges'
+
   def new
   end
   
   def create
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
-    )
+    # customer = Stripe::Customer.create(
+    #   :email => params[:stripeEmail],
+    #   :source  => params[:stripeToken]
+    # )
 
     charge = Stripe::Charge.create(
       :amount      => @amount,
       :currency    => "cad",
-      :source      => params[:stripe_token], 
+      :source      => params[:stripeToken], 
       :description => "Charge for order ID: #{@order.id}",
-      :customer    => customer.id
+      # :customer    => customer.id
     )
-    @order.update(stripe_txn_id: charge.id) 
+
+    @order.update!(stripe_txn_id: charge.id)
+
     redirect_to @order, notice: 'Thanks for the purchase!'
 
   rescue Stripe::CardError => e

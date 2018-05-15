@@ -4,7 +4,8 @@ class FinalProductsController < ApplicationController
   before_action :find_final_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @final_products = FinalProduct.all.with_attached_images
+    @final_products = FinalProduct.all
+    # @final_products = FinalProduct.with_attached_images.map { |final_product| final_product.as_json.merge({ images: final_product.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
   end
 
   def show
