@@ -1,7 +1,7 @@
 import React from 'react'
-import Form from './Form'
-// import Input from './Input'
-// import Button from './Button'
+import ProductForm from './ProductForm'
+import Input from './Input'
+import Button from './Button'
 
 const handleSubmit = event => {
   event.preventDefault();
@@ -14,9 +14,9 @@ const handleSubmit = event => {
 }
 
 const FormForFinalProduct = ({ arts, items, product, onSubmit = () => {} }) => (
- <div className="FormForFinalProduct" onSubmit={handleSubmit}>
+ <div className="FormForFinalProduct checkout" onSubmit={handleSubmit}>
     <div className="checkout-container">
-     <h3 className="heading-3">Give shape to someone's design:</h3>
+     <h3 className="heading-3">Give a shape to someone's design:</h3>
       <div className="row">
         <div className="col">
           <Input 
@@ -47,7 +47,7 @@ const FormForFinalProduct = ({ arts, items, product, onSubmit = () => {} }) => (
           />
         </div>
       </div>
-      <input type="submit" value="Shape!" />
+      <Button text="Shape!" />
     </div>
  </div>
 );

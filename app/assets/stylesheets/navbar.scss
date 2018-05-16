@@ -2,7 +2,7 @@
   text-decoration: none;
 }
 
-nav {
+nav, footer {
   background: #ccc;
   font-family: helvetica, arial, serif;
   font-size: 13px;
@@ -38,13 +38,15 @@ nav span {
   display: block;
 }
 
-nav a {
+nav a,
+footer a {
   text-decoration: none;
   color: #fff;
   display: block;
 }
 
-nav ul {
+nav ul,
+footer ul {
   list-style: none;
   position: relative;
   text-align: left;

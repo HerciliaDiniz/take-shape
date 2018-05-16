@@ -3,24 +3,18 @@ class ChargesController < ApplicationController
   before_action :find_order, only: [:new, :create]
   before_action :amount, only: [:new, :create]
 
-
   layout 'charges'
 
   def new
   end
   
   def create
-    # customer = Stripe::Customer.create(
-    #   :email => params[:stripeEmail],
-    #   :source  => params[:stripeToken]
-    # )
 
     charge = Stripe::Charge.create(
       :amount      => (@amount * 100).to_i,
       :currency    => "cad",
       :source      => params[:stripeToken], 
-      :description => "Charge for order ID: #{@order.id}",
-      # :customer    => customer.id
+      :description => "Charge for order ID: #{@order.id}"
     )
 
     @order.update!(stripe_txn_id: charge.id)
@@ -42,7 +36,6 @@ class ChargesController < ApplicationController
   def amount
     @amount = @order.total_amount
   end
-
 
 end
 

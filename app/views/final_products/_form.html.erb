@@ -1,3 +1,7 @@
+<%= form_with(model: @final_product, local: true) do |form| %>
+  <%= react_component 'NewFinalProductPage', { arts: @arts, items: @items, product: @final_product } %>
+<% end %>
+
 <%= form_for @final_product do |f| %>
   <%= @final_product.errors.full_messages.join(', ') %>
   <div>
@@ -37,6 +41,3 @@
   <% end %>
   </div>
 
-<%= form_with(model: @final_product, local: true) do |form| %>
-  <%= react_component 'NewFinalProductPage', { arts: @arts, items: @items, product: @final_product } %>
-<% end %>
