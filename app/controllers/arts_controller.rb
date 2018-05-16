@@ -32,6 +32,9 @@ class ArtsController < ApplicationController
 
   def update
     if @art.update(art_params)
+      if params[:art][:images]
+        @art.images.attach params[:art][:images]
+      end
       redirect_to @art, notice: 'Successfully updated!'
     else
       render :edit

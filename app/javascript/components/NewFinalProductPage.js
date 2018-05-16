@@ -1,6 +1,7 @@
 import React from 'react';
 import FormForFinalProduct from './FormForFinalProduct';
 import Item from './Item';
+import Art from './Art';
 
 class NewFinalProductPage extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class NewFinalProductPage extends React.Component {
         return (art.id === parseInt(event.target.value))
     })
     this.setState({ artImage: selectedArt[0].images[0] })
-  } 
+  }   
 
   onSelectItemChange = (event) => {
     this.setState({ itemId: event.target.value })
@@ -42,29 +43,25 @@ class NewFinalProductPage extends React.Component {
     return (
       <div className="NewFinalProductPage">
         <div className="app-container">
-          <div className="row">
-            <div className="col">
-              <Item 
-                img={this.state.itemImage} 
-              />
-             </div> 
-            <div className="col">  
-              <Item 
-                name={this.state.title} 
-                price={this.state.price} 
-                img={this.state.artImage} 
-              />
-            </div>
-            <div className="col no-gutters">
-              <FormForFinalProduct 
-                arts={arts} 
-                items={items} 
-                product={product} 
-                FormChange={this.onFormChange}
-                SelectArtChange={this.onSelectArtChange}
-                SelectItemChange={this.onSelectItemChange}
-              />
-            </div>
+          <div className="col-1">
+            <Item 
+              name={this.state.title} 
+              price={this.state.price} 
+              img={this.state.itemImage} 
+            />
+            <Art 
+              img={this.state.artImage} 
+            />
+          </div>
+          <div className="col-2 no-gutters">
+            <FormForFinalProduct 
+              arts={arts} 
+              items={items} 
+              product={product} 
+              FormChange={this.onFormChange}
+              SelectArtChange={this.onSelectArtChange}
+              SelectItemChange={this.onSelectItemChange}
+            />
           </div>
         </div>
       </div>

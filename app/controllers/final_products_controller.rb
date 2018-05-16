@@ -13,7 +13,7 @@ class FinalProductsController < ApplicationController
 
   def new
     @arts = Art.with_attached_images.map { |art| art.as_json.merge({ images: art.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
-    @items = Item.with_attached_images.map { |item| item.as_json.merge({ images: item.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
+    @items = Item.with_attached_images.map { |item| item.as_json.merge({ images: item.images.map {|img| img.variant(resize: "600x600").processed.service_url }.as_json }) }
     @final_product = FinalProduct.new
   end
 

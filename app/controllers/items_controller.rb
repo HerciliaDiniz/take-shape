@@ -31,6 +31,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
+      if params[:item][:images]
+        @item.images.attach params[:item][:images]
+      end
       redirect_to @item, notice: 'Successfully updated!'
     else
       render :edit
