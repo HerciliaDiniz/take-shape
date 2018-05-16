@@ -3,18 +3,8 @@ import ProductForm from './ProductForm'
 import Input from './Input'
 import Button from './Button'
 
-const handleSubmit = event => {
-  event.preventDefault();
-
-  const formData =  new FormData(event.currentTarget);
-  onSubmit({
-    title: formData.get("title"),
-    subtitle: formData.get("subtitle")
-  });
-}
-
-const FormForFinalProduct = ({ arts, items, product, onSubmit, SelectArtChange, SelectItemChange = () => {} }) => (
- <div className="FormForFinalProduct checkout" onSubmit={handleSubmit}>
+const FormForFinalProduct = ({ arts, items, product, SelectArtChange, SelectItemChange = () => {} }) => (
+ <div className="FormForFinalProduct checkout">
     <div className="checkout-container">
      <h3 className="heading-3">Give a shape to someone's design:</h3>
       <div className="row">
@@ -22,21 +12,21 @@ const FormForFinalProduct = ({ arts, items, product, onSubmit, SelectArtChange, 
           <Input 
             label="Name" 
             type="text" 
-            name="title"
+            name={"final_product[title]"}
           />
         </div>
         <div className="col">
           <Input 
             label="Subtitle" 
             type="text" 
-            name="subtitle" 
+            name={"final_product[subtitle]"} 
           />
         </div>
         <div className="col">
           <Input 
             label="Description" 
             type="text" 
-            name="description" 
+            name={"final_product[description]"} 
           />
         </div>
         <div className="Input">

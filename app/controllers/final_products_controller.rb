@@ -18,6 +18,7 @@ class FinalProductsController < ApplicationController
   end
 
   def create
+    # @art = Art.find params[:final_product][:art_id]
     @art = Art.find params[:final_product][:art][:id]
     @item = Item.find params[:final_product][:item][:id]
     @final_product = FinalProduct.new final_product_params

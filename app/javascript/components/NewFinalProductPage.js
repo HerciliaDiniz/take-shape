@@ -11,12 +11,14 @@ class NewFinalProductPage extends React.Component {
       items: props.items,
       product: props.product,
       selectedArt: '',
-      selectedItem: ''
+      selectedItem: '',
+      title: '',
+      price: ''
     };
   }
 
   onFormChange = (event) => {
-    this.setState({ formfield: event.target.value })
+    this.setState({ formField: event.target.value })
   }
 
   onSelectArtChange = (event) => {
@@ -43,15 +45,13 @@ class NewFinalProductPage extends React.Component {
           <div className="row">
             <div className="col">
               <Item 
-                name={product.title} 
-                price={product.price} 
                 img={this.state.itemImage} 
               />
              </div> 
             <div className="col">  
               <Item 
-                name={product.title} 
-                price={product.price} 
+                name={this.state.title} 
+                price={this.state.price} 
                 img={this.state.artImage} 
               />
             </div>
