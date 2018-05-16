@@ -9,7 +9,9 @@ class NewFinalProductPage extends React.Component {
     this.state = {
       arts: props.arts,
       items: props.items,
-      product: props.product
+      product: props.product,
+      selectedArt: '',
+      selectedItem: ''
     };
   }
 
@@ -17,8 +19,24 @@ class NewFinalProductPage extends React.Component {
     this.setState({ formfield: event.target.value })
   }
 
+  onSelectArtChange = (event) => {
+    this.setState({ artId: event.target.value })
+    let selectedArt = this.state.arts.filter( (art) => {
+        return (art.id === parseInt(event.target.value))
+    })
+    this.setState({ artImage: selectedArt[0].images[0] })
+  } 
+
+  onSelectItemChange = (event) => {
+    this.setState({ itemId: event.target.value })
+    let selectedItem = this.state.items.filter((item) => {
+      return (item.id === parseInt(event.target.value))
+    })
+    this.setState({ itemImage: selectedItem[0].images[0] })
+  } 
+
   render(){
-    const { items = {}, arts = {}, product = [] } = this.state;
+    const { items = [], arts = [], product = [] } = this.state;
     return (
       <div className="NewFinalProductPage">
         <div className="app-container">
@@ -27,7 +45,14 @@ class NewFinalProductPage extends React.Component {
               <Item 
                 name={product.title} 
                 price={product.price} 
-                img={"http://via.placeholder.com/600x600"} 
+                img={this.state.itemImage} 
+              />
+             </div> 
+            <div className="col">  
+              <Item 
+                name={product.title} 
+                price={product.price} 
+                img={this.state.artImage} 
               />
             </div>
             <div className="col no-gutters">
@@ -35,7 +60,10 @@ class NewFinalProductPage extends React.Component {
                 arts={arts} 
                 items={items} 
                 product={product} 
-                FormChange={this.onFormChange}/>
+                FormChange={this.onFormChange}
+                SelectArtChange={this.onSelectArtChange}
+                SelectItemChange={this.onSelectItemChange}
+              />
             </div>
           </div>
         </div>

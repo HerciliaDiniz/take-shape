@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Button = (props) => (
-  <button className="checkout-btn" type="submit">{props.text}</button>
+  <input className="button checkout-btn" value={props.text} type="submit"/>
 );
 
 export default Button

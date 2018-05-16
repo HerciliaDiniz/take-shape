@@ -12,14 +12,14 @@ class FinalProductsController < ApplicationController
   end
 
   def new
-    @arts = Art.all
-    @items = Item.all
+    @arts = Art.with_attached_images.map { |art| art.as_json.merge({ images: art.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
+    @items = Item.with_attached_images.map { |item| item.as_json.merge({ images: item.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
     @final_product = FinalProduct.new
   end
 
   def create
-    @art = Art.find params[:final_product][:art_id]
-    @item = Item.find params[:final_product][:item_id]
+    @art = Art.find params[:final_product][:art][:id]
+    @item = Item.find params[:final_product][:item][:id]
     @final_product = FinalProduct.new final_product_params
     @final_product.art = @art
     @final_product.item = @item
@@ -57,7 +57,7 @@ class FinalProductsController < ApplicationController
   end
 
   def final_product_params
-    params.require(:final_product).permit(:title, :subtitle, :description)
+    params.require(:final_product).permit(:title, :subtitle, :description, :art, :item)
   end
 
 end
