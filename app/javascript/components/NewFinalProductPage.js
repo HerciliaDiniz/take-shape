@@ -16,7 +16,8 @@ class NewFinalProductPage extends React.Component {
       itemImage: props.items[0].images[0],
       artImage: 'https://s3.ca-central-1.amazonaws.com/takeshape/shape.png',
       choosenTitle: '',
-      finalPrice: ''
+      selectedItemPrice: '',
+      selectedArtPrice: ''
     };
   }
 
@@ -25,19 +26,26 @@ class NewFinalProductPage extends React.Component {
   }
 
   onSelectArtChange = (event) => {
-    this.setState({ artId: event.target.value })
+    let artId = event.target.value 
     let selectedArt = this.state.arts.filter( (art) => {
         return (art.id === parseInt(event.target.value))
     })
-    this.setState({ artImage: selectedArt[0].images[0] })
+
+    this.setState({ 
+      artImage: selectedArt[0].images[0],
+      selectedArtPrice: selectedArt[0].price
+    })
   }   
 
   onSelectItemChange = (event) => {
-    this.setState({ itemId: event.target.value })
+    let itemId = event.target.value 
     let selectedItem = this.state.items.filter((item) => {
       return (item.id === parseInt(event.target.value))
     })
-    this.setState({ itemImage: selectedItem[0].images[0] })
+    this.setState({ 
+      itemImage: selectedItem[0].images[0],
+      selectedItemPrice: selectedItem[0].price
+    })
   } 
 
   render(){
@@ -48,7 +56,7 @@ class NewFinalProductPage extends React.Component {
           <div className="col-1">
             <Item 
               name={this.state.choosenTitle} 
-              price={this.state.finalPrice} 
+              price={this.state.selectedItemPrice + this.state.selectedArtPrice} 
               img={this.state.itemImage} 
             />
             <Art 

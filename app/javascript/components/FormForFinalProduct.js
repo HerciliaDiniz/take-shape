@@ -30,10 +30,10 @@ const FormForFinalProduct = ({ arts, items, product, FormChange, SelectArtChange
             name={"final_product[description]"} 
           />
         </div>
-        <div className="Input">
+        <div className="Input"> 
           <label>Choose an item</label>
           <div className="input-field">
-            <select onChange={SelectItemChange} name={"final_product[item][id]"}>
+            <select className="styled-select" onChange={SelectItemChange} name={"final_product[item][id]"}>
               {
                 items.map((item, i) => {
                   return (
@@ -47,7 +47,7 @@ const FormForFinalProduct = ({ arts, items, product, FormChange, SelectArtChange
         <div className="Input">
           <label>Choose a design</label>
           <div className="input-field">
-            <select onChange={SelectArtChange} name={"final_product[art][id]"}>
+            <select className="styled-select" onChange={SelectArtChange} name={"final_product[art][id]"}>
               {
                 arts.map((art, i) => {
                   return (
