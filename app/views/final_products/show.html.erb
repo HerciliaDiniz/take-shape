@@ -17,7 +17,7 @@
       </div>
       <div class="items-container-show-1">
         <div class="ph3">
-          <span class="f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray"><%= button_to "Add #{@final_product.title} to cart", line_items_path(:final_product_id => @final_product.id ) %><span> 
+          <p class="lh-copy measure center f6 black-70"><%= button_to "Add #{@final_product.title} to cart", line_items_path(:final_product_id => @final_product.id ), class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray" %></p>
         </div>
         <div class="ph3">
           <span><%# link_to "Edit", edit_final_product_path(@final_product), class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray" %><br></span> 

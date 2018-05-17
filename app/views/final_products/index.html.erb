@@ -1,13 +1,21 @@
+<div class="flex-that">
 <% @final_products.each do |product| %>
-  <p><%= link_to "#{product.title}", final_product_path(product) %> </p>
-  <p><%= product.subtitle %></p>
-  <p><%= product.description %></p>
-  <p><%= number_to_currency(product.price) %></p>
-  <p>
-    <%= link_to "Edit", edit_final_product_path(product) %> |
-    <%= link_to "Delete", final_product_path(product), method: :delete, data: {confirm: "Are you sure?"} %>
-    <%= button_to "Add #{product.title} to cart", line_items_path(:final_product_id => product.id) %>
-  </p>
-<% end %>
 
-<%# react_component("FinalProductPage", { final_products: @final_products }) %>
+  <div class="items-container-show"> 
+    <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+      <div class="tc">
+        <div class="br-100 h3 w3 dib">
+        </div>  
+        <h1 class="f4 title-clean"><%= link_to "#{product.title}", final_product_path(product), class:"title-clean" %></h1>
+        <hr class="mw3 bb bw1 b--black-10">
+      </div>
+      <p class="lh-copy measure center f6 black-70"><%= number_to_currency(product.price) %></p>
+      <p class="lh-copy measure center f6 black-70"><%= product.subtitle %></p>
+      <p class="lh-copy measure center f6 black-70"><%= product.description %></p>
+      <p class="lh-copy measure center f6 black-70"><%= link_to "Delete", final_product_path(product), method: :delete, data: {confirm: "Are you sure?"}, class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray" %></p>
+      <p class="lh-copy measure center f6 black-70"><%= button_to "Add #{product.title} to cart", line_items_path(:final_product_id => product.id), class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray" %></p>
+    </article>
+  </div>
+  
+<% end %>
+</div>

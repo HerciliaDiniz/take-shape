@@ -75,3 +75,14 @@ main {
 .form-container {
   margin: 50px
 }
+
+.title-clean {
+  text-decoration : none;
+  color: #78757c; 
+}
+
+.flex-that {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around
+}
