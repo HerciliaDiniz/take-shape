@@ -1,5 +1,27 @@
-<% if @item.images.attached? %>
-  <% @item.images.each do |image| %>
-    <%= image_tag image.variant(resize: "500x500").processed.service_url %>
-  <% end %>
-<% end %>
+
+
+<div class="gallery-total">
+  <div class="gallery">
+    <div class="carousel">
+      <% if @item.images.attached? %>
+        <% @item.images.each do |image| %>
+
+          <input type="radio" id="<% image.id%>" name="gallery-control" checked>
+          <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control"/>
+          <div class="wrap">
+              <figure>
+                  <label for="fullscreen">
+                      <%= image_tag image.variant(resize: "700x700").processed.service_url %>
+                  </label>
+              </figure>
+        </div>
+
+        <div class="thumbnails">
+
+            <div class="slider"><div class="indicator"></div></div>
+            <label for="image1" class="thumb" style="background-image: url('https://unsplash.it/700/480/?random')"></label>
+        <% end %>
+      <% end %>
+        </div>
+      </div>
+</div>

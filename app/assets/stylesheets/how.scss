@@ -1,0 +1,29 @@
+.how-to {
+  margin: 0;
+  height: 300vh;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 500vh;
+  background: linear-gradient(rgba(38, 29, 29, 0), white 80%);
+}
+
+.how-to img {
+  width: 100%;
+  height: 400px;
+  padding-top: 300px;
+  position: fixed;
+  z-index: -1;
+}
+
+.text-how {
+  position: absolute;
+  z-index: -2;
+}
+
+.space-breathe {
+  height: 700px;
+}

@@ -1,7 +1,34 @@
-<% @art.images.each do |image| %>
-  <%= image_tag image.variant(resize: "500x500").processed.service_url %>
-<% end %>
-<%=# image_tag @art.images[0] %>
+<div class="gallery-total">
+  <div class="gallery">
+    <div class="carousel">
+      <% if @art.images.attached? %>
+        <% @art.images.each do |image| %>
 
-<%=# react_component("ArtCardList", { art: @art }) %>
+          <input type="radio" id="image1" name="gallery-control" checked>
+          <input type="radio" id="image2" name="gallery-control">
+          <input type="radio" id="image3" name="gallery-control">
+          <input type="radio" id="image4" name="gallery-control">
+
+
+          <input type="checkbox" id="fullscreen" name="gallery-fullscreen-control"/>
+
+          <div class="wrap">
+
+              <figure>
+                  <label for="fullscreen">
+                      <%= image_tag image.variant(resize: "500x500").processed.service_url %>
+                  </label>
+              </figure>
+        </div>
+
+        <div class="thumbnails">
+
+            <div class="slider"><div class="indicator"></div></div>
+            <label for="image1" class="thumb" style="background-image: url('https://unsplash.it/700/480/?random')"></label>
+        <% end %>
+      <% end %>
+        </div>
+      </div>
+</div>
+
 

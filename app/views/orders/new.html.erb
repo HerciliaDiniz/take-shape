@@ -1,45 +1,49 @@
-<%= form_for(@order) do |f| %>
-  <p>
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name, required: true, autofocus: true %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name, required: true, autofocus: true %>
-  </p>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </p>
-  <p>
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :unit, "Apt / Suite / Unit" %><br>
-    <%= f.text_field :unit %>
-  </p>
-  <p>
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </p>
-  <p>
-    <%= f.label :country %><br>
-    <%= f.text_field :country %>
-  </p>
-  <p>
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
-  </p>
-  <p>
-    <%= f.label :postal_code %><br>
-    <%= f.number_field :postal_code %>
-  </p>
-  <p>
-    <%= f.label :phone %><br>
-    <%= f.telephone_field :phone %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
+<div class="form-container">
+  <%= form_for(@order) do |f| %>
+    <p>
+      <%= f.label :first_name, class:"f6 b db mb2" %>
+      <%= f.text_field :first_name, required: true, autofocus: true, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :last_name, class:"f6 b db mb2" %>
+      <%= f.text_field :last_name, required: true, autofocus: true, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :email, class:"f6 b db mb2" %>
+      <%= f.email_field :email, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :address, class:"f6 b db mb2" %>
+      <%= f.text_field :address, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :unit, "Apt / Suite / Unit", class:"f6 b db mb2" %>
+      <%= f.text_field :unit, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :city, class:"f6 b db mb2" %>
+      <%= f.text_field :city, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :country, class:"f6 b db mb2" %>
+      <%= f.text_field :country, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :state, class:"f6 b db mb2" %>
+      <%= f.text_field :state, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :postal_code, class:"f6 b db mb2" %>
+      <%= f.number_field :postal_code, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.label :phone, class:"f6 b db mb2" %>
+      <%= f.telephone_field :phone, class:"db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2" %>
+    </p>
+    <p>
+      <%= f.submit "Proceed to pay", class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray" %>
+    </p>
+  <% end %>
+</div>
+
+
