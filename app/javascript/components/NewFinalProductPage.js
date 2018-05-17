@@ -13,13 +13,15 @@ class NewFinalProductPage extends React.Component {
       product: props.product,
       selectedArt: '',
       selectedItem: '',
-      title: '',
-      price: ''
+      itemImage: props.items[0].images[0],
+      artImage: 'https://s3.ca-central-1.amazonaws.com/takeshape/shape.png',
+      choosenTitle: '',
+      finalPrice: ''
     };
   }
 
   onFormChange = (event) => {
-    this.setState({ formField: event.target.value })
+    this.setState({ choosenTitle: event.target.value })
   }
 
   onSelectArtChange = (event) => {
@@ -45,8 +47,8 @@ class NewFinalProductPage extends React.Component {
         <div className="app-container">
           <div className="col-1">
             <Item 
-              name={this.state.title} 
-              price={this.state.price} 
+              name={this.state.choosenTitle} 
+              price={this.state.finalPrice} 
               img={this.state.itemImage} 
             />
             <Art 

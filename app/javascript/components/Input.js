@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Input = (props) => (
+const Input = ({ InputChange, type, name, label }) => (
   <div className="Input">
-    <label>{props.label}</label>
+    <label>{label}</label>
     <div className="input-field">
-      <input type={props.type} name={props.name} />
+      <input type={type} name={name} onChange={InputChange} />
     </div>
   </div>
 );

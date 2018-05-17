@@ -3,7 +3,7 @@ import ProductForm from './ProductForm'
 import Input from './Input'
 import Button from './Button'
 
-const FormForFinalProduct = ({ arts, items, product, SelectArtChange, SelectItemChange = () => {} }) => (
+const FormForFinalProduct = ({ arts, items, product, FormChange, SelectArtChange, SelectItemChange = () => {} }) => (
  <div className="FormForFinalProduct checkout">
     <div className="checkout-container">
      <h3 className="heading-3">Give a shape to someone's design:</h3>
@@ -13,6 +13,7 @@ const FormForFinalProduct = ({ arts, items, product, SelectArtChange, SelectItem
             label="Name" 
             type="text" 
             name={"final_product[title]"}
+            InputChange={FormChange}
           />
         </div>
         <div className="col">

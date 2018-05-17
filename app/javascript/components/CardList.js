@@ -1,18 +1,16 @@
 import React from "react";
-import Card from "./Card";
+import Card2 from "./Card2";
 
-const CardList = ({ options = {} }) => {
+const CardList = ({ options = [] }) => {
   return (
     <div> 
       {
-      options.map((option, i) => {
+      options.map((option) => {
           return (
-            <Card
+            <Card2
               key={option.id}
               image={option.images[0]}
               title={option.title}
-              subtitle={option.subtitle}
-              price={option.price}
             />
           )  
         })

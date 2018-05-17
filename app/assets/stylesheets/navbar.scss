@@ -56,8 +56,6 @@ nav ul li {
   float: left;
 }
 
-/* clear'n floats */
-
 nav ul:after {
   clear: both;
 }
@@ -85,8 +83,6 @@ nav {
   border-bottom-left-radius: 8px;
 }
 
-/* prime */
-
 nav ul.primary li a {
   display: block;
   padding: 20px 30px;
@@ -100,8 +96,6 @@ nav ul.primary li:last-child a {
 nav ul.primary li a:hover {
   color: #000;
 }
-
-/* subs */
 
 nav ul.sub {
   position: absolute;
@@ -132,14 +126,10 @@ nav ul.sub li a:hover {
   background: #eeeeee;
 }
 
-/* sub display*/
-
 nav ul.primary li:hover ul {
   display: block;
   background: #fff;
 }
-
-/* keeps the tab background white */
 
 nav ul.primary li:hover a {
   background: #fff;
@@ -187,4 +177,9 @@ nav ul.primary li:hover>a {
     color: #ccc;
     background: none;
   }
+}
+
+ul.primary {
+  margin-bottom: 0;
+  margin-top: 0
 }
