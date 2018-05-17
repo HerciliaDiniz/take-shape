@@ -6,7 +6,7 @@ import Button from './Button'
 const FormForFinalProduct = ({ arts, items, product, FormChange, SelectArtChange, SelectItemChange = () => {} }) => (
  <div className="FormForFinalProduct checkout">
     <div className="checkout-container">
-     <h3 className="heading-3">Give a shape to someone's design:</h3>
+     <h3 className="heading-3"></h3>
       <div className="row">
         <div className="col">
           <Input 

@@ -18,7 +18,6 @@ class FinalProductsController < ApplicationController
   end
 
   def create
-    # @art = Art.find params[:final_product][:art_id]
     @art = Art.find params[:final_product][:art][:id]
     @item = Item.find params[:final_product][:item][:id]
     @final_product = FinalProduct.new final_product_params
@@ -27,7 +26,9 @@ class FinalProductsController < ApplicationController
     @final_product.user = current_user
 
     if @final_product.save
-      # @final_product.images.attach params[:final_product][:images]
+      if params[:final_product][:images]
+        @final_product.images.attach params[:final_product][:images]
+      end
       redirect_to @final_product, notice: 'Successfully created!'
     else
       render :new

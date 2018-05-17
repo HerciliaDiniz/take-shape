@@ -1,8 +1,69 @@
-  <p><%= @final_product.title %></p>
-  <p><%= @final_product.subtitle %></p>
-  <p><%= @final_product.description %></p>
-  <p>Price: <%= number_to_currency(@final_product.price) %></p>
+<div>
+  <div class="app-container">
+    <div class="col-1">
+      <div class="item-container">
+        <div class="item-details">
+          <div class="item-name"><%= @final_product.title %></div>
+          <div class="item-price"><%= number_to_currency(@final_product.price) %></div>
+        </div>
+        <div class="item-image">
+          <%= image_tag @final_product.item.images[0].variant(resize: "600x600").processed.service_url %>
+        </div>
+      </div>
+      <div class="art-container">
+        <div class="art-image">
+          <%= image_tag @final_product.art.images[0].variant(resize: "180x180").processed.service_url %>
+        </div>
+      </div>
+      <div class="items-container-show-1">
+        <div class="ph3">
+          <span class="f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray"><%= button_to "Add #{@final_product.title} to cart", line_items_path(:final_product_id => @final_product.id ) %><span> 
+        </div>
+        <div class="ph3">
+          <span><%# link_to "Edit", edit_final_product_path(@final_product), class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray" %><br></span> 
+          <span><%= link_to "Delete", final_product_path(@final_product), method: :delete, data: {confirm: "Are you sure?"}, class:"f6 link dim br3 ph3 pv2 mb2 dib white bg-mid-gray" %><br></span>
+        </div>
+      </div>
+    </div>
 
-    <%= link_to "Edit", edit_final_product_path(@final_product) %> |
-    <%= link_to "Delete", final_product_path(@final_product), method: :delete, data: {confirm: "Are you sure?"} %>
-    <%= button_to "Add #{@final_product.title} to cart", line_items_path(:final_product_id => @final_product.id) %>
+    <div class="col-2 no-gutters">
+
+      <div class="items-container-show"> 
+        <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+          <div class="tc">
+            <div class="br-100 h3 w3 dib">
+              <%= image_tag @final_product.item.images[0].variant(resize: "100x100").processed.service_url %>
+            </div>  
+            <h1 class="f4"><%= @final_product.item.title %></h1>
+            <hr class="mw3 bb bw1 b--black-10">
+          </div>
+          <p class="lh-copy measure center f6 black-70"><%= number_to_currency(@final_product.item.price) %></p>
+          <p class="lh-copy measure center f6 black-70"><%= @final_product.item.subtitle %></p>
+          <p class="lh-copy measure center f6 black-70"><%= @final_product.item.description %></p>
+        </article>
+
+        <h1>+</h1>
+
+        <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
+          <div class="tc">
+            <div class="br-100 h3 w3 dib">
+              <%= image_tag @final_product.art.images[0].variant(resize: "100x100").processed.service_url %>
+            </div>  
+            <h1 class="f4"><%= @final_product.art.title %></h1>
+            <hr class="mw3 bb bw1 b--black-10">
+          </div>
+          <p class="lh-copy measure center f6 black-70"><%= number_to_currency(@final_product.art.price) %></p>
+          <p class="lh-copy measure center f6 black-70"><%= @final_product.art.subtitle %></p>
+          <p class="lh-copy measure center f6 black-70"><%= @final_product.art.description %></p>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+  
+

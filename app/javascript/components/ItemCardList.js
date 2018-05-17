@@ -1,14 +1,15 @@
 import React from "react";
-import Card2 from "./Card2";
+import ItemCard from "./ItemCard";
 
-const CardList = ({ options = [] }) => {
+const ItemCardList = ({ options = [] }) => {
   return (
     <div> 
       {
       options.map((option) => {
           return (
-            <Card2
+            <ItemCard
               key={option.id}
+              id={option.id}
               image={option.images[0]}
               title={option.title}
             />
@@ -20,4 +21,4 @@ const CardList = ({ options = [] }) => {
 
 }
 
-export default CardList
+export default ItemCardList

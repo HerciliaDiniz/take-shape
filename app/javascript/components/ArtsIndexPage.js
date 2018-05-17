@@ -1,5 +1,5 @@
 import React from "react"
-import CardList from './CardList';
+import ArtCardList from './ArtCardList';
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
 
@@ -27,10 +27,10 @@ class ArtsIndexPage extends React.Component {
       <h1>Loading</h1> :
       (
         <div className='ArtsIndexPage tc'>
-          <h1 className='f2'>Arts</h1> 
+          <h1 className="heading-3">Designs</h1>
           <SearchBox searchChange={this.onSearchChange} />
           <Scroll>
-          <CardList options={filteredArts} />
+          <ArtCardList options={filteredArts} />
           </Scroll>
         </div>
       );

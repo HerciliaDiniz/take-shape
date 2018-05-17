@@ -1,23 +1,111 @@
-<h2>Cart</h2>
-<ul>
-  <% @cart.line_items.each do |line_item| %>
-    <li>Item: <%= line_item.final_product.title %></li>
-    <li>Price: <%= number_to_currency(line_item.final_product.price) %></li>
-    <li>Quantity: <%= line_item.quantity %></li> 
-    <li>Total Price: <%= number_to_currency(line_item.total_price) %></li>
-    <ul>
-      <li>
-        <%= link_to "Add one", add_line_item_path(line_item), method: :patch %>
-        <%= link_to "Reduce one", reduce_line_item_path(line_item), method: :patch %>
-      </li>
-      <li>
-        <%= link_to "Remove item", line_item_path(line_item), method: :delete %>
-      </li>
-    </ul>
-  <% end %>
-</ul>
-<h3>Sub total: <%= number_to_currency(@cart.sub_total) %></h3>
+<div class="final-shopping-cart">
+  <div class="wrap cart-body">
+    <header class="cart-header cf">
+      <strong>Items in Your Cart</strong>
+      <span><%= link_to "Checkout", new_order_path, class:"btn" %><br></span>
+    </header>
+    <div class="bonus-products">
+    </div>
 
-<%= link_to "Proceed to checkout", new_order_path %><br>
+    <div class="cart-table">
+      <ul>
+  <!-- begin variation product w/ option -->
+        <% @cart.line_items.each do |line_item| %>
+          <li class="item">
+            <div class="item-main cf">
+              <div class="item-block ib-info cf">
 
-<%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"} %>
+                <div class="product-img">
+                  <div class="col-1">
+                    <div class="item-container-cart">
+                      <div class="item-image-cart">
+                        <%= image_tag line_item.final_product.item.images[0].variant(resize: "200x200").processed.service_url %>
+                      </div>
+                    </div>
+                    <div class="art-container-cart">
+                      <div class="art-image-cart">
+                        <%= image_tag line_item.final_product.art.images[0].variant(resize: "50x50").processed.service_url %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <img class="product-img" src="http://fakeimg.pl/150/e5e5e5/adadad/?text=IMG" />
+
+                <div class="ib-info-meta">
+                  <span class="title"><%= line_item.final_product.title %></span>
+                  <span class="item no"><%= line_item.final_product.id %></span>
+                  <span class="styles">
+                    <span><strong>Color</strong><%= line_item.final_product.item.title %></span>
+                    <span><strong>Details</strong><%= line_item.final_product.item.description %></span>
+                    <span><strong>Warranty</strong>: 1 Year</span>
+                    <span class="blue-link">Edit Details</span>
+                  </span>
+                </div>
+              </div>
+              <div class="item-block ib-qty">
+                <input type="text" value="<%= line_item.quantity %>" class="qty" />
+                <span class="price"><span>x</span><%= number_to_currency(line_item.final_product.price) %></span>
+              </div>
+              <div class="item-block ib-total-price">
+                <span class="tp-price"><%= number_to_currency(line_item.total_price) %></span>
+                <span class="tp-remove"><i class="i-cancel-circle"></i></span>
+              </div>         
+            </div>
+            <div class="item-foot cf">
+              <div class="if-message"><p>There is no promo currently associated with this item</p></div>
+              <div class="if-left"><span class="if-status">In Stock</span></div>
+              <div class="if-right"><span><%= link_to "Add one", add_line_item_path(line_item), method: :patch, class:"blue-link" %></span> | 
+              <span><%= link_to "Reduce one", reduce_line_item_path(line_item), method: :patch, class:"blue-link" %></span> | 
+              <span><%= link_to "Remove item", line_item_path(line_item), method: :delete, class:"blue-link" %></span></div>
+            </div>
+          </li>
+        <% end %>
+  <!-- end variation product w/ option -->
+      </ul>
+    </div>
+    <div class="sub-table cf">
+      <div class="summary-block">
+        <div class="sb-promo">
+          <input type="text" placeholder="Enter Promo Code" />
+          <span class="btn">Apply</span>
+        </div>        
+        <ul>
+          <li class="subtotal"><span class="sb-label">Subtotal</span><span class="sb-value"><%= number_to_currency(@cart.sub_total) %></span></li>
+          <li class="shipping"><span class="sb-label">Shipping</span><span class="sb-value">Free</span></li>
+          <li class="tax"><span class="sb-label">Est. Tax | <span class="tax-edit">edit <i class="i-notch-down"></i></span></span><span class="sb-value"><%= number_to_currency(@cart.sub_total * 12 / 100) %></span></li>
+          <li class="tax-calculate"><input type="text" value="06484" class="tax" /><span class="btn">Calculate</span></li>
+          <li class="grand-total"><span class="sb-label">Total</span><span class="sb-value"><%= number_to_currency((@cart.sub_total * 12 / 100) + @cart.sub_total) %></span></li>
+        </ul>
+      </div>
+      <div class="copy-block">    
+        <p>Items will be saved in your cart for 30 days. To save items longer, add them to your <a href="#">Wish List</a>.</p>
+        <p class="customer-care">
+          Call us M-F 8:00 am to 6:00 pm EST<br />
+          (877)-555-5555 or <a href="#">contact us</a>. <br />     
+        </p>
+      </div>    
+    </div>
+    
+      <span><%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"}, class:"btn" %><br></span>
+    <div class="cart-footer cf">
+      <span><%= link_to "Checkout", new_order_path, class:"btn" %><br></span>
+      <span class="cont-shopping"><i><%= link_to "Continue Shopping", new_final_product_path, class:"i-angle-left" %></i></span>    
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

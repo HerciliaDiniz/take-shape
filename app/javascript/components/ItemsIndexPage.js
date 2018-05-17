@@ -1,5 +1,5 @@
 import React from "react"
-import CardList from './CardList';
+import ItemCardList from './ItemCardList';
 import SearchBox from './SearchBox';
 import Scroll from './Scroll';
 
@@ -27,10 +27,10 @@ class ItemsIndexPage extends React.Component {
       <h1>Loading</h1> :
       (
         <div className='ItemsIndexPage tc'>
-          <h1 className='f2'>Items</h1> 
+          <h1 className="heading-3">Items</h1>
           <SearchBox searchChange={this.onSearchChange} />
           <Scroll>
-          <CardList options={filteredItems} />
+          <ItemCardList options={filteredItems} />
           </Scroll>
         </div>
       );

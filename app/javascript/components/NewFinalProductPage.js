@@ -56,7 +56,7 @@ class NewFinalProductPage extends React.Component {
           <div className="col-1">
             <Item 
               name={this.state.choosenTitle} 
-              price={this.state.selectedItemPrice + this.state.selectedArtPrice} 
+              price={(this.state.selectedItemPrice + this.state.selectedArtPrice).toLocaleString('en-US', {style: 'currency', currency: 'USD'})} 
               img={this.state.itemImage} 
             />
             <Art 

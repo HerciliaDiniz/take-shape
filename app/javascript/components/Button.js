@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Button = (props) => (
-  <input className="button checkout-btn" value={props.text} type="submit"/>
+const Button = ({ text, onSubmit }) => (
+  <input className="button checkout-btn" value={text} type="submit" onClick={onSubmit} />
 );
 
 export default Button
