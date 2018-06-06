@@ -7,7 +7,7 @@ class LineItemsController < ApplicationController
     current_cart = @current_cart
 
     if current_cart.final_products.include?(chosen_product)
-      @line_item = current_cart.line_items.find_by(:final_product_id => chosen_product)
+      @line_item = current_cart.line_items.find_by final_product_id: chosen_product
       @line_item.quantity += 1
     else
       @line_item = LineItem.new

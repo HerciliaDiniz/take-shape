@@ -1,24 +1,39 @@
-# README
+# TakeShape
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+TakeShape is a digital marketplace for designers and the artistic community in general (from beginners to the more experienced folks) to share some of their ideas with the general public. 
 
-Things you may want to cover:
+It offers visitants the possibility to get to know them by their public profile, see their personal galleries and support their work by buying a version of their creation to apply to one of the items available on the website (currently mugs, but more to come).
 
-* Ruby version
+It is built with Rails (server-side) and React (client-side)
 
-* System dependencies
+## Details:
 
-* Configuration
+* Ruby 5.2
+* ReactJS
 
-* Database creation
+## Initial Setup:
 
-* Database initialization
+* On the project directory, run **bundle**
+* Create Database: **rails db:create**
+* Seed data: **rails db:seed**
+* To restart from zero, run: **rails db:setup**
 
-* How to run the test suite
+## How It Works:
 
-* Services (job queues, cache servers, search engines, etc.)
+* First, create an account. After login, you can: 
 
-* Deployment instructions
+* As a visitant:
+  1. See all artists profiles
+  2. See arts gallery
+  3. Apply arts to items and see how the final product would look like
+  4. Save your favorite creations 
+  5. Favorite an artist and a specific piece of art 
 
-* ...
+
+* As an artist:  
+  1. Create your artist profile
+  2. Upload your creations (add as many images of it as you want). Images need to be saved in PNG with transparent background. Remember to choose a high quality image.
+  3. Define how much you want to charge for each piece. 
+
+
+
