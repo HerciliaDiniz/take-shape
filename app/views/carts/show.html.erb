@@ -19,12 +19,12 @@
                   <div class="col-1">
                     <div class="item-container-cart">
                       <div class="item-image-cart">
-                        <%= image_tag line_item.final_product.item.images[0].variant(resize: "200x200").processed.service_url %>
+                        <%= image_tag resolve_image_url(line_item.final_product.item.images[0].variant(resize: "200x200")) %>
                       </div>
                     </div>
                     <div class="art-container-cart">
                       <div class="art-image-cart">
-                        <%= image_tag line_item.final_product.art.images[0].variant(resize: "50x50").processed.service_url %>
+                        <%= image_tag resolve_image_url(line_item.final_product.art.images[0].variant(resize: "50x50")) %>
                       </div>
                     </div>
                   </div>

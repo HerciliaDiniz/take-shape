@@ -7,12 +7,14 @@
           <div class="item-price"><%= number_to_currency(@final_product.price) %></div>
         </div>
         <div class="item-image">
-          <%= image_tag @final_product.item.images[0].variant(resize: "600x600").processed.service_url %>
+          <%= image_tag resolve_image_url(@final_product.item.images[0].variant(resize: "600x600")) %>
+
         </div>
       </div>
       <div class="art-container">
         <div class="art-image">
-          <%= image_tag @final_product.art.images[0].variant(resize: "180x180").processed.service_url %>
+          <%= image_tag resolve_image_url(@final_product.art.images[0].variant(resize: "180x180")) %>
+
         </div>
       </div>
       <div class="items-container-show-1">
@@ -32,7 +34,7 @@
         <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
           <div class="tc">
             <div class="br-100 h3 w3 dib">
-              <%= image_tag @final_product.item.images[0].variant(resize: "100x100").processed.service_url %>
+              <%= image_tag resolve_image_url(@final_product.item.images[0].variant(resize: "100x100")) %>
             </div>  
             <h1 class="f4"><%= @final_product.item.title %></h1>
             <hr class="mw3 bb bw1 b--black-10">
@@ -47,7 +49,7 @@
         <article class="mw5 center bg-white br3 pa3 pa4-ns mv3 ba b--black-10">
           <div class="tc">
             <div class="br-100 h3 w3 dib">
-              <%= image_tag @final_product.art.images[0].variant(resize: "100x100").processed.service_url %>
+              <%= image_tag resolve_image_url(@final_product.art.images[0].variant(resize: "100x100")) %>
             </div>  
             <h1 class="f4"><%= @final_product.art.title %></h1>
             <hr class="mw3 bb bw1 b--black-10">

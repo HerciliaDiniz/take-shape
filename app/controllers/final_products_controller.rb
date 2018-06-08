@@ -5,7 +5,11 @@ class FinalProductsController < ApplicationController
 
   def index
     @final_products = FinalProduct.all
-    # @final_products = FinalProduct.with_attached_images.map { |final_product| final_product.as_json.merge({ images: final_product.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
+    # @final_products = FinalProduct.with_attached_images.map { | final_products | final_products.as_json.merge({
+    #     images: final_products.images.map { | img | resolve_image_url(img.variant(resize: "300x300"))
+    #     }.as_json
+    #   })
+    # }
   end
 
   def show
