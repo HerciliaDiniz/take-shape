@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   before_action :current_cart
   
   private
+
+  def resolve_image_url(img)
+    if Rails.env == 'development'
+      main_app.url_for(img)
+    else
+      img.processed.service_url;
+    end
+  end 
+  helper_method :resolve_image_url
+
   def user_signed_in?
     current_user.present?
   end

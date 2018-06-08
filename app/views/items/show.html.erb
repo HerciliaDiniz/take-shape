@@ -9,7 +9,7 @@
           <div class="wrap">
               <figure>
                   <label for="fullscreen">
-                      <%= image_tag image.variant(resize: "700x700").processed.service_url %>
+                      <%= image_tag resolve_image_url(image.variant(resize: "700x700")) %>
                   </label>
               </figure>
         </div>

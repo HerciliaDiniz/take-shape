@@ -4,7 +4,11 @@ class ItemsController < ApplicationController
   before_action :find_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.with_attached_images.map { |item| item.as_json.merge({ images: item.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
+    @items = Item.with_attached_images.map { | item | item.as_json.merge({
+        images: item.images.map { | img | resolve_image_url(img.variant(resize: "300x300"))
+        }.as_json
+      })
+    }
   end
 
   def show

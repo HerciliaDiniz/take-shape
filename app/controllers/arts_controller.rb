@@ -4,7 +4,11 @@ class ArtsController < ApplicationController
   before_action :find_art, only: [:show, :edit, :update, :destroy]
 
   def index
-    @arts = Art.with_attached_images.map { |art| art.as_json.merge({ images: art.images.map {|img| img.variant(resize: "300x300").processed.service_url }.as_json }) }
+    @arts = Art.with_attached_images.map { | art | art.as_json.merge({
+        images: art.images.map { | img | resolve_image_url(img.variant(resize: "300x300"))
+        }.as_json
+      })
+    }
   end
 
   def show
@@ -43,6 +47,7 @@ class ArtsController < ApplicationController
 
   def destroy
     @art.destroy
+    @art.images.purge
     redirect_to arts_path, notice: 'Successfully deleted!'
   end
 
