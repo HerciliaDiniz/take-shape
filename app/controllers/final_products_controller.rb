@@ -4,7 +4,7 @@ class FinalProductsController < ApplicationController
   before_action :find_final_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @final_products = FinalProduct.all
+    @final_products = FinalProduct.with_attached_images
     # @final_products = FinalProduct.with_attached_images.map { | final_products | final_products.as_json.merge({
     #     images: final_products.images.map { | img | resolve_image_url(img.variant(resize: "300x300"))
     #     }.as_json
@@ -71,7 +71,13 @@ class FinalProductsController < ApplicationController
   end
 
   def final_product_params
-    params.require(:final_product).permit(:title, :subtitle, :description, :art, :item)
+    params.require(:final_product).permit(
+      :title, 
+      :subtitle, 
+      :description, 
+      :art, 
+      :item
+    )
   end
 
 end
