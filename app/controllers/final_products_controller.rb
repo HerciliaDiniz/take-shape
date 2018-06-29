@@ -71,13 +71,11 @@ class FinalProductsController < ApplicationController
   end
 
   def final_product_params
-    params.require(:final_product).permit(
-      :title, 
-      :subtitle, 
-      :description, 
-      :art, 
-      :item
-    )
+    params.require(:final_product).permit(:title, 
+                                          :subtitle, 
+                                          :description, 
+                                          :art, 
+                                          :item)
   end
 
 end
